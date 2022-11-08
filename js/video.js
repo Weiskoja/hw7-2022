@@ -53,17 +53,49 @@ document.querySelector("#faster").addEventListener("click", function() {
 // oldstyle video
 document.querySelector("#vintage").addEventListener("click", function() {
 	video.className = "oldSchool"
-	console.log(video.className)
 })
 
 // original style the video
 document.querySelector("#orig").addEventListener("click", function() {
 	video.className = "video"
-	console.log(video.className)
-	console.log("this")
+})
+
+// set volume
+document.querySelector("#slider").addEventListener("input", function() {
+	var sliderVal = document.querySelector("#slider").value;
+	video.volume = sliderVal * 0.01;
+	document.querySelector("#volume").innerHTML = String(sliderVal) + "%";
+
 })
 
 
 
+// mute
+document.querySelector("#mute").addEventListener("click", function() {
+	if (!video.muted){
+		video.muted = true;
+		document.querySelector("#mute").innerHTML = "Unmute"
+		document.querySelector("#slider").value = 0;
+		document.querySelector("#volume").innerHTML = "0%"
+	}	
+	else{
+		video.muted = false;
+		document.querySelector("#mute").innerHTML = "Mute"
+		document.querySelector("#slider").value = video.volume * 100;
+		document.querySelector("#volume").innerHTML = String(video.volume * 100) + "%";
+	}
+	
+})
 
 
+//var curVol = video.volume
+	//if (!(video.muted)){
+		//document.querySelector("#slider").value = 0;
+		//video.volume = 0;
+		//console.log(video.volume);
+	//}
+	//else{
+		//document.querySelector("#slider").value = curVol;
+		//video.volume = curVol;
+		//console.log(video.volume);
+	//}
