@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
 // play video //
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	video.play()
+	video.play();
 });
 
 
@@ -45,10 +45,16 @@ document.querySelector("#faster").addEventListener("click", function() {
 });
 
 // skip video
-//document.querySelector("#pause").addEventListener("click", function() {
-//	video.e = curRate - 0.5
-//	console.log("Pause Video");
-//});
+document.querySelector("#skip").addEventListener("click", function() {
+	if (video.currentTime >= video.duration){
+		video.currentTime = 0;
+		video.play();
+	}
+	else{
+		video.currentTime +=10;
+	}
+	console.log(video.currentTime);
+});
 
 // oldstyle video
 document.querySelector("#vintage").addEventListener("click", function() {
